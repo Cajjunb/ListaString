@@ -14,7 +14,8 @@ void shiftEsquerda(char* String,int base,int vezes){
 int contaElementosIguaisSeguidos(char* String,int base){
 	int i = base;
 	int count = 0 ;
-	while(String[i] != '\0'&& String[i] != String[i+1]){
+	while(String[i] != '\0'&& String[i] == String[i+1]){
+		i++;
 		count++;
 	}
 	return count;
@@ -30,10 +31,10 @@ char intToChar1Digito(int num){
 void compactaString(char *String){
 	int i ;
 	int numRepetidos= 0;
-	while(String[i]=0){
+	while(String[i]!='\0'){
 		numRepetidos = contaElementosIguaisSeguidos(String,i);
 		if(numRepetidos > 0){
-			shiftEsquerda(String,i, numRepetidos- 2);  // -2 porque para nao apagar o formato numChar
+			shiftEsquerda(String,i, numRepetidos- 1);  // -1 porque para nao apagar o formato numChar
 			String[i] = intToChar1Digito(numRepetidos); // COLOCA O NUMERAL NA STRING
 		}
 		else
@@ -44,11 +45,13 @@ void compactaString(char *String){
 
 
 int main(){
-	char String[30] = "OPAAAA NEGUIM";
+	char String[50] = "AAAAAAAAAAH MLKEEEEEEE NEGUIM";
 	int i = 0;
+	printf("%s\n", String);
 	while( String[i] != '\0'){
-		printf("Char %c Repetiu = %d",String[i], contaElementosIguaisSeguidos(String,i));
+		compactaString(String);
 		i++;
 	}
+	printf("%s\n", String);
 
 }
