@@ -23,7 +23,7 @@ int contaElementosIguaisSeguidos(char* String,int base){
 
 
 char intToChar1Digito(int num){
-	return (char) (num + 48) ;   // 48 eh o caracter zero na tabela ascii 
+	return (char) (num + '0') ;   // 48 eh o caracter zero na tabela ascii 
 }
 
 
@@ -35,7 +35,7 @@ void compactaString(char *String){
 		numRepetidos = contaElementosIguaisSeguidos(String,i);
 		if(numRepetidos > 0){
 			shiftEsquerda(String,i, numRepetidos- 1);  // -1 porque para nao apagar o formato numChar
-			String[i] = intToChar1Digito(numRepetidos); // COLOCA O NUMERAL NA STRING
+			String[i] = intToChar1Digito(numRepetidos+1); // COLOCA O NUMERAL NA STRING
 		}
 		else
 			i++;
@@ -45,7 +45,7 @@ void compactaString(char *String){
 
 
 int main(){
-	char String[50] = "AAAAAAAAAAH MLKEEEEEEE NEGUIM";
+	char String[50] = "AAABCCCCCBBBCCAAA";
 	int i = 0;
 	printf("%s\n", String);
 	while( String[i] != '\0'){
